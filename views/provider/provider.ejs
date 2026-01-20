@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Weclome to Provider Page</h1> 
+
+
+    <% provider.forEach((oneProvider)=>{ %>
+        <p>Name: <%=oneProvider.name %></p>
+        <p>Email: <%=oneProvider.email %></p>
+        <div>
+        <img src="<%= oneProvider.image %>" alt="person photo" width="300">
+        </div>
+
+        <p>Qualification:  <%=oneProvider.qualification %></p>
+
+    <%}) %>
+
+</body>
+</html>
