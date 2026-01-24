@@ -13,10 +13,17 @@
         <p>Name: <%=oneProvider.name %></p>
         <p>Email: <%=oneProvider.email %></p>
         <div>
-        <img src="<%= oneProvider.image %>" alt="person photo" width="300">
+        
+        <img src="<%= oneProvider.image %>" alt="person photo22" width="300">
         </div>
 
-        <p>Qualification:  <%=oneProvider.qualification %></p>
+        <p>Qualification:  <%=oneProvider.qualification %></p> 
+
+        <a href="/provider/update/<%= oneProvider._id%>">Edit provider</a>
+        <form action="/provider/delete/<%= oneProvider._id%>" method="post">
+            <button>Delete</button>
+        </form>
+        
 
     <%}) %>
 

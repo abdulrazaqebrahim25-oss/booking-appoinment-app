@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Update Provider Page</h1>
+
+    <form action="/provider/update/<%= foundProvider._id %>" method="post">
+        <label for="">Name:</label>
+        <input type="text" name="name" value="<%= foundProvider.name %>">
+        <label for="">Email:</label>
+        <input type="text" name="email" value="<%= foundProvider.email %>">
+        <label for="">Photo:</label>
+        <input type="text" name="image" value="<%= foundProvider.image %>">
+        <label for="">Qualification:</label>
+        <input type="text" name="qualification" value="<%= foundProvider.qualification %>">
+
+        <button>Update Provider</button>
+    </form>
+</body>
+</html>

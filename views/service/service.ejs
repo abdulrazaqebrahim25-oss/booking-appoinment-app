@@ -1,10 +1,15 @@
-const mongoose = require('mongoose')
-const Provider = require('./Provider')
-const Appointment = require('./Appointment')
-const User = require('./User')
-// Schema 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to Serveice Page</h1>
+</body>
+</html>
 
-const serviceSchema = new mongoose.Schema({
     service: {
         type: String,
         
@@ -20,10 +25,3 @@ const serviceSchema = new mongoose.Schema({
     appointment: {type: mongoose.Schema.Types.ObjectId,
         ref: 'Appointment'
     }
-
-}) 
-
-const Service = mongoose.model('Service', serviceSchema)
-
-
-module.exports = Service 
