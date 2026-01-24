@@ -7,21 +7,17 @@
 </head>
 <body>
     <h1>Welcome to Serveice Page</h1>
+
+    <%services.forEach((oneService)=>{ %>
+    <p><%=oneService.service %></p>
+    <p><%=oneService.price %></p>
+    <p><%=oneService.details %></p>
+    <p><%=oneService.provider.name %></p>
+    <a href="/service/<%=oneService._id %>">Edit the servies</a>
+    
+    <% })%>
+    
+
+
 </body>
 </html>
-
-    service: {
-        type: String,
-        
-    },
-    price: Number,
-    details: String,
-    user: {type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    },
-    provider: {type: mongoose.Schema.Types.ObjectId,
-        ref: 'Provider'
-    },
-    appointment: {type: mongoose.Schema.Types.ObjectId,
-        ref: 'Appointment'
-    }
