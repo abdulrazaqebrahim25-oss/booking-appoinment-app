@@ -13,7 +13,39 @@
         <label for="">Date:</label>
         <input type="date" name="date">
         <label for="">Time:</label>
-        <input type="time" name="date"> 
+        <input type="time" name="time"> 
+        <label for="">Servies</label>
+        <%service.forEach((oneService)=>{ %>
+        <select name="service" id="">
+            <option value="<%=oneService._id %>">
+                <%=oneService.service %>
+            </option>
+
+
+        </select>
+        <% })%>
+        <label for="">Price:</label>
+        <%service.forEach((oneService)=>{ %>
+        <select name="price" id="">
+            <option value="<%=oneService._id %>">
+                <%= oneService.price %>
+            </option>
+
+
+        </select>
+        <% })%>
+        <label for=""> Provider</label>
+        <%service.forEach((oneService)=>{ %>
+        <select name="provider" id="">
+            <option value="<%=oneService._id %>">
+                <%=oneService.provider.name %>
+            </option>
+
+
+        </select>
+        <% })%>
+
+
 
         <button>Create</button>
         
