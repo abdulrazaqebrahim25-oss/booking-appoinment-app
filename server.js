@@ -17,6 +17,10 @@ const serviceRoutes = require('./controllers/service-routes.js')
 
 
 
+
+
+
+
 app.use(express.static('public')) // my app will serve all static files from public folder
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'))
@@ -30,10 +34,6 @@ app.use(
   })
 );
 app.use(passUserToView)
-
-
-
-
 
 
 

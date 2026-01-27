@@ -4,11 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+
 </head>
 <body>
     <h1>Welcome to Appointmetn Page </h1>
 
-    <a href="/appointment/new">Take Appointment</a>
+    <a href="/appointment/new">Take Appointment</a> 
+    <a href="/">Back to Home Page</a>
+    <br>
 
+    <% if(user.role === 'Admin') {%>
+        <%appointments.forEach((oneApp)=>{%>
+            <%=oneApp.date %>. <br>
+            <%=oneApp.time %> <br>
+            <%=oneApp.service.provider.name %> <br>  
+            <%=oneApp.user.username %> <br>  
+            
+               
+      <%  }) %>
+
+    <% } else if(user.role === 'user') { %>
+
+            <%appointments.forEach((oneApp)=>{%>
+            <%=oneApp.date %>. <br>
+            <%=oneApp.time %> <br>
+            <%=oneApp.service.provider.name %> <br>  
+            <%=oneApp.user.username %> <br>  
+               
+      <%  }) %>
+
+    <% }%>
+ 
 </body>
 </html>
+

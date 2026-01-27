@@ -3,31 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Provider Page</title>
+    
 </head>
 <body>
-    <h1>Weclome to Provider Page</h1> 
+    <h1>Welcome to Provider Page</h1> 
     <nav> 
-        <a href="/provider/new">Add provider</a>
+        <% if (user && user.role === 'Admin') { %>
+            <a href="/provider/new">Add provider</a>
+        <% } %>
+        <a href="/">Back to Home Page</a>
     </nav>
 
-    <% provider.forEach((oneProvider)=>{ %>
-        <p>Name: <%=oneProvider.name %></p>
-        <p>Email: <%=oneProvider.email %></p>
+    <% provider.forEach((oneProvider) => { %>
+        <p>Name: <%= oneProvider.name %></p>
+        <p>Email: <%= oneProvider.email %></p>
         <div>
-        
-        <img src="<%= oneProvider.image %>" alt="person photo22" width="300">
+            <img src="<%= oneProvider.image %>" alt="person photo" width="300">
         </div>
+        <p>Qualification:  <%= oneProvider.qualification %></p> 
 
-        <p>Qualification:  <%=oneProvider.qualification %></p> 
-
-        <a href="/provider/update/<%= oneProvider._id%>">Edit provider</a>
-        <form action="/provider/delete/<%= oneProvider._id%>" method="post">
-            <button>Delete</button>
-        </form>
-        
-
-    <%}) %>
+        <% if (user && user.role === 'Admin') { %>
+            <a href="/provider/update/<%= oneProvider._id %>">Edit provider</a>
+            <form action="/provider/delete/<%= oneProvider._id %>" method="post" style="display:inline">
+                <button>Delete</button>
+            </form>
+        <% } %>
+        <hr>
+    <% }) %>
 
 </body>
 </html>

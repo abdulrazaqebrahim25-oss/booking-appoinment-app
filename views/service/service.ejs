@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Service Page</title>
+    
 </head>
 <body>
-    <h1>Welcome to Serveice Page</h1>
+    <h1>Welcome to Service Page</h1>
 
     <nav> 
-        <a href="/service/new">Add New Servies</a>
+        <% if (user && user.role === 'Admin') { %>
+            <a href="/service/new">Add New Service</a>
+        <% } %>
+        <a href="/">Back to Home Page</a>
     </nav>
 
-    <%services.forEach((oneService)=>{ %>
-    <p><%=oneService.service %></p>
-    <p><%=oneService.price %></p>
-    <p><%=oneService.details %></p>
-    <p><%=oneService.provider.name %></p>
-    <a href="/service/<%=oneService._id %>">Edit the servies</a>
-    
-    <% })%>
-    
+    <% services.forEach((oneService) => { %>
+        <p>Service: <%= oneService.service %></p>
+        <p>Price: <%= oneService.price %></p>
+        <p>Details: <%= oneService.details %></p>
+        <p>Provider: <%= oneService.provider.name %></p>
 
-
+        <% if (user && user.role === 'Admin') { %>
+            <a href="/service/<%= oneService._id %>">Edit Service</a>
+           
+        <% } %>
+        <hr>
+    <% }) %>
 </body>
 </html>
