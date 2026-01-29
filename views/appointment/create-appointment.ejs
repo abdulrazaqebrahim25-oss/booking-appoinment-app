@@ -28,6 +28,7 @@
             <div class="input-group">
                 <label class="label" for="service">Service</label>
                 <select name="service" id="service" class="select" required>
+                    <option value="" disabled selected>Select a service</option>
                     <% service.forEach((oneService) => { %>
                         <option value="<%= oneService._id %>"><%= oneService.service %></option>
                     <% }) %>
@@ -37,18 +38,14 @@
             <div class="input-group">
                 <label class="label" for="price">Price</label>
                 <select name="price" id="price" class="select" required>
-                    <% service.forEach((oneService) => { %>
-                        <option value="<%= oneService._id %>"><%= oneService.price %></option>
-                    <% }) %>
+                    <option value="" disabled selected>Select a service first</option>
                 </select>
             </div>
 
             <div class="input-group">
                 <label class="label" for="provider">Provider</label>
                 <select name="provider" id="provider" class="select" required>
-                    <% service.forEach((oneService) => { %>
-                        <option value="<%= oneService._id %>"><%= oneService.provider.name %></option>
-                    <% }) %>
+                    <option value="" disabled selected>Select a service first</option>
                 </select>
             </div>
 
@@ -64,6 +61,25 @@
             <a href="/appointment" class="btn btn-secondary">Back to Appointments</a>
         </div>
     </div>
+
+    <script>
+ 
+        const serviceSelect = document.getElementById('service');
+        const priceSelect = document.getElementById('price');
+        const providerSelect = document.getElementById('provider');
+
+        const services = JSON.parse('<%- JSON.stringify(service || []) %>');
+
+        serviceSelect.addEventListener('change', () => {
+            const selectedId = serviceSelect.value;
+            const selectedService = services.find(s => s._id === selectedId);
+
+
+            priceSelect.innerHTML = `<option value="${selectedService._id}">${selectedService.price} BD</option>`;
+
+            providerSelect.innerHTML = `<option value="${selectedService.provider._id}">${selectedService.provider.name}</option>`;
+        });
+    </script>
 
 </body>
 </html>
