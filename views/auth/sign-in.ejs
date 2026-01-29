@@ -4,17 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign In</title>
+    <link rel="stylesheet" href="/css/style.css">
+
  
   </head>
   <body>
     <%- include('../navbar') %>
+    <div class="sing-in">
     <h1>Sign in</h1>
-    <form action="/auth/sign-in" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
-      <button type="submit">Sign in</button>
+    <div class="input-group"> 
+    <form class="sing-inForm" action="/auth/sign-in" method="POST">
+      <label class="label" for="username">Username:</label>
+      <input class="input" type="text" name="username" id="username" />
+      <label class="label" for="password">Password:</label>
+      <input class="input" type="password" name="password" id="password" />
+      
+      <button class="sign-inBtn" type="submit">
+      <span class="transition"></span>
+      <span class="gradient"></span>
+      <span class="label">Sign in</span>
+      </button>
+
     </form>
+    </div>
+    </div>
   </body>
 </html>

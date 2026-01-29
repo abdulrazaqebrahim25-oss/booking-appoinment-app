@@ -3,26 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Create Provider</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    <h1>Create Providers Page</h1>
+    <%- include('../navbar') %>
 
-    <form action="/provider/new" method="post">
-        <label for="">Name:</label>
-        <input type="text" name="name">
-        <label for="">Email:</label>
-        <input type="text" name="email">
-        <label for="">Photo:</label>
-        <input type="text" name="image">
-        <label for="">Qualification:</label>
-        <input type="text" name="qualification">
+    <div class="auth-container">
+        <h1>Create Provider</h1>
 
-        <button>Add Provider</button>
-        
-    </form>
+        <form action="/provider/new" method="post" class="auth-form">
+
+            <label>Name:</label>
+            <input type="text" name="name" class="input">
+
+            <label>Email:</label>
+            <input type="text" name="email" class="input">
+
+            <label>Photo URL:</label>
+            <input type="text" name="image" class="input">
+
+            <label>Qualification:</label>
+            <input type="text" name="qualification" class="input">
+
+            <button class="sign-inBtn" type="submit">
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Add Provider</span>
+            </button>
+
+        </form>
+    </div>
 
 </body>
 </html>
-

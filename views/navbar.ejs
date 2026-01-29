@@ -1,13 +1,15 @@
-<div>
+<div class="navbar">
     <% if (user) { %>
 
         <% if (user && user.role  === 'Admin') { %>
+            <a href="/">Home</a>
             <a href="/appointment">Appointment</a>
             <a href="/service">Services</a>
             <a href="/provider">Providers</a>
             <a href="/auth/sign-out">Logout</a>
 
         <% } else if (user && user.role === 'user') { %>
+            <a href="/">Home</a>
             <a href="/appointment">Appointment</a>
             <a href="/service">Services</a>
             <a href="/provider">Providers</a>

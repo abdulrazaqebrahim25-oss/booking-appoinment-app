@@ -3,34 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Provider Page</title>
-    
+    <title>Providers</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    <h1>Welcome to Provider Page</h1> 
-    <nav> 
-        <% if (user && user.role === 'Admin') { %>
-            <a href="/provider/new">Add provider</a>
-        <% } %>
-        <a href="/">Back to Home Page</a>
-    </nav>
 
-    <% provider.forEach((oneProvider) => { %>
-        <p>Name: <%= oneProvider.name %></p>
-        <p>Email: <%= oneProvider.email %></p>
-        <div>
-            <img src="<%= oneProvider.image %>" alt="person photo" width="300">
+    <%- include('../navbar') %>
+
+    <div class="container">
+        <h1>Providers</h1>
+
+        <div class="provider-actions">
+            <% if (user && user.role === 'Admin') { %>
+                <a href="/provider/new" class="btn btn-primary">Add Provider</a>
+            <% } %>
+            <a href="/" class="btn btn-secondary">Back Home</a>
         </div>
-        <p>Qualification:  <%= oneProvider.qualification %></p> 
 
-        <% if (user && user.role === 'Admin') { %>
-            <a href="/provider/update/<%= oneProvider._id %>">Edit provider</a>
-            <form action="/provider/delete/<%= oneProvider._id %>" method="post" style="display:inline">
-                <button>Delete</button>
-            </form>
-        <% } %>
-        <hr>
-    <% }) %>
+        <div class="provider-grid">
+            <% provider.forEach((oneProvider) => { %>
+
+                <div class="provider-card">
+
+                    <div class="provider-img">
+                        <img src="<%= oneProvider.image %>" alt="provider photo">
+                    </div>
+
+                    <div class="provider-details">
+                        <p class="label">Name</p>
+                        <p class="value"><%= oneProvider.name %></p>
+
+                        <p class="label">Email</p>
+                        <p class="value"><%= oneProvider.email %></p>
+
+                        <p class="label">Qualification</p>
+                        <p class="value"><%= oneProvider.qualification %></p>
+                    </div>
+
+                    <% if (user && user.role === 'Admin') { %>
+                        <div class="provider-buttons">
+                            <a href="/provider/update/<%= oneProvider._id %>" class="btn btn-secondary">Edit</a>
+
+                            <form action="/provider/delete/<%= oneProvider._id %>" method="post">
+                                <button class="btn btn-primary">Delete</button>
+                            </form>
+                        </div>
+                    <% } %>
+
+                </div>
+
+            <% }) %>
+        </div>
+    </div>
 
 </body>
 </html>

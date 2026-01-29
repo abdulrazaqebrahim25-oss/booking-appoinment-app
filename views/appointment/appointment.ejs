@@ -3,39 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-
+    <title>Manage Appointments</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Welcome to Appointmetn Page </h1>
 
-    <a href="/appointment/new">Take Appointment</a> 
-    <a href="/">Back to Home Page</a>
-    <br>
+    <%- include('../navbar') %>
 
-    <% if(user.role === 'Admin') {%>
-        <%appointments.forEach((oneApp)=>{%>
-            <%=oneApp.date %>. <br>
-            <%=oneApp.time %> <br>
-            <%=oneApp.service.provider.name %> <br>  
-            <%=oneApp.user.username %> <br>  
-            
-               
-      <%  }) %>
+    <div class="container">
+        <h1>Manage Appointments</h1>
 
-    <% } else if(user.role === 'user') { %>
+        <div class="provider-actions">
+            <a href="/appointment/new" class="btn btn-primary">Book New Session</a>
+            <a href="/" class="btn btn-secondary">Home</a>
+        </div>
 
-            <%appointments.forEach((oneApp)=>{%>
-            <%=oneApp.date %>. <br>
-            <%=oneApp.time %> <br>
-            <%=oneApp.service.provider.name %> <br>  
-            <%=oneApp.user.username %> <br>  
-               
-      <%  }) %>
+        <div class="appointment-grid">
+            <% appointments.forEach((oneApp) => { %>
+                <div class="app-card">
 
-    <% }%>
- 
+                    <div class="app-time-badge">
+                        <span class="date"><%= oneApp.date %></span>
+                        <span class="time"><%= oneApp.time %></span>
+                    </div>
+
+                    <div class="app-details">
+                        <p class="label">Provider</p>
+                        <p class="value"><%= oneApp.service.provider.name %></p>
+
+                        <p class="label">Client</p>
+                        <p class="value"><%= oneApp.user.username %></p>
+                    </div>
+
+                    <% if(user.role === 'Admin') { %>
+                        <div class="provider-buttons" style="justify-content:center; margin-top: 1rem; gap: 10px; flex-wrap: wrap;">
+                            <span class="role-tag">Staff Dashboard</span>
+
+                            <!-- Optional Admin Actions -->
+                            <a href="/appointment/<%= oneApp._id %>/edit" class="btn btn-secondary">Edit</a>
+                            <form action="/appointment/<%= oneApp._id %>/delete" method="post" style="margin:0;">
+                                <button class="btn btn-primary" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    <% } %>
+
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
 </body>
 </html>
-

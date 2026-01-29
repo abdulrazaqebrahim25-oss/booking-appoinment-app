@@ -1,0 +1,356 @@
+/* body { */
+    /* background-image: url("https://i.imgur.com/iP9vKq9.png"); */
+    /* background-position: center; */
+    /* background-size: cover; */
+/* } */
+
+
+/* Color Palette */
+:root {
+    --bg-dark: #f5f5f5;        /* Deep background */
+    --surface-dark: #dfdfdf;   /* Card background */
+    --accent-gold: #c5a059;    /* Gold highlight */
+    --text-primary: #1c1b1b;   /* Clean white text */
+    --text-secondary: #a0a0a0; /* Muted gray text */
+    --border-dim: #333333;     /* Subtle borders */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Typography */
+h1 {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-gold);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Modern Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--accent-gold);
+    color: #000;
+}
+
+.btn-secondary {
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+.btn:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+.appointment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.app-card {
+    background: var(--surface-dark);
+    border: 1px solid var(--border-dim);
+    padding: 1.5rem;
+    position: relative;
+    border-top: 3px solid var(--accent-gold); /* Top gold bar */
+}
+
+.app-time-badge {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.date { font-weight: bold; color: var(--accent-gold); }
+.time { color: var(--text-secondary); }
+
+.app-details .label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.app-details .value {
+    font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+}
+
+.role-tag {
+    font-size: 0.6rem;
+    background: #333;
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: var(--accent-gold);
+} 
+
+/* sing in page */
+
+
+.sing-in {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sing-inForm {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+  max-width: 190px;
+  height: 44px;
+  background-color: #05060f0a;
+  border-radius: .5rem;
+  padding: 0 1rem;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  transition: border-color .3s cubic-bezier(.25,.01,.25,1) 0s, color .3s cubic-bezier(.25,.01,.25,1) 0s,background .2s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.label {
+  display: block;
+  margin-bottom: .3rem;
+  font-size: .9rem;
+  font-weight: bold;
+  color: #05060f99;
+  transition: color .3s cubic-bezier(.25,.01,.25,1) 0s;
+}
+
+.input:hover, .input:focus, .input-group:hover .input {
+  outline: none;
+  border-color: #05060f;
+}
+
+.input-group:hover .label, .input:focus {
+  color: #05060fc2;
+} 
+
+.sign-inBtn {
+  font-size: 17px;
+  margin: 20px;
+  padding: 1em 2.7em;
+  font-weight: 500;
+  background: #a2a6ac;
+  color: white;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.6em;
+  cursor: pointer;
+}
+
+.sign-inBtn .gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 0.6em;
+  margin-top: -0.25em;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.sign-inBtn .label {
+  position: relative;
+  top: -1px;
+}
+
+.sign-inBtn .transition {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 500ms;
+  background-color: #c5a059;
+  border-radius: 9999px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sign-inBtn:hover .transition {
+  width: 14em;
+  height: 14em;
+}
+
+.sign-inBtn:active {
+  transform: scale(0.97);
+}
+
+/* SIGN UP Page */
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+}
+
+.auth-form {
+    background: var(--surface-dark);
+    border: 1px solid var(--border-dim);
+    border-top: 3px solid var(--accent-gold);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 300px;   
+    box-sizing: border-box;
+}
+
+
+
+/* Select style */
+.select {
+  width: 100%;
+  height: 38px;   
+  background-color: #05060f0a;
+  border-radius: .5rem;
+  padding: 0 0.8rem;
+  border: 2px solid transparent;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: border-color .3s ease;
+}
+
+.select:hover,
+.select:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+}
+
+
+
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+    background: var(--surface-dark);
+    border-bottom: 2px solid var(--accent-gold);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Links */
+.navbar a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    position: relative;
+    padding: 6px 4px;
+    transition: color 0.3s ease;
+}
+
+/* Gold underline animation */
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: var(--accent-gold);
+    transition: width 0.3s ease;
+}
+
+.navbar a:hover {
+    color: var(--accent-gold);
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+
+/* PROVIDER PAGE */
+
+.provider-actions {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.provider-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.provider-card {
+    background: var(--surface-dark);
+    border: 1px solid var(--border-dim);
+    border-top: 3px solid var(--accent-gold);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.provider-img img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--accent-gold);
+    margin-bottom: 1rem;
+}
+
+.provider-details {
+    width: 100%;
+}
+
+.provider-buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.provider-buttons form {
+    margin: 0;
+}

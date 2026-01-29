@@ -72,13 +72,13 @@ connectToDB() // connect to database
 app.use('/auth',authController)
 app.use('/',indexController)
 // to move them latter to PROTECTED
-app.use('/appointment',appointmetRoutes)
-app.use('/provider',providerRoutes)
-app.use('/service',serviceRoutes)
 
 // PROTECTED ROUTES:
 app.use(isSignedIn)
 // Everything under the user NEEDS to be logged in to se
+app.use('/appointment',appointmetRoutes)
+app.use('/provider',providerRoutes)
+app.use('/service',serviceRoutes)
 
 
 

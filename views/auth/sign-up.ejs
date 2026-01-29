@@ -4,26 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-    
+    <link rel="stylesheet" href="/css/style.css">
+
   </head>
-  <body>
-    <%- include('../navbar') %>
+<body>
+  <%- include('../navbar') %>
+
+  <div class="auth-container">
     <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="post">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-      <label for="email">Email:</label>
-      <input type="text" name="email">
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" name="confirmPassword" id="confirmPassword" /> 
-      <label for="">Role:</label>
-      <select name="role" id="role">
+
+    <form action="/auth/sign-up" method="post" class="auth-form">
+
+      <label>Username:</label>
+      <input type="text" name="username" class="input" />
+
+      <label>Email:</label>
+      <input type="text" name="email" class="input">
+
+      <label>Password:</label>
+      <input type="password" name="password" class="input" />
+
+      <label>Confirm Password:</label>
+      <input type="password" name="confirmPassword" class="input" /> 
+
+      <label>Role:</label>
+      <select name="role" class="select">
         <option value="Admin">Admin</option>
         <option value="user">User</option>
       </select>
-      <button type="submit">Sign up</button>
+
+      <button class="sign-inBtn" type="submit">
+        <span class="transition"></span>
+        <span class="gradient"></span>
+        <span class="label">Sign up</span>
+      </button>
+
     </form>
-  </body>
+  </div>
+</body>
+
 </html>

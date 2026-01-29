@@ -3,35 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Edit Service</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Edit Service Page</h1>
 
-        <form action="/service/<%=foundService._id %>/edit" method="post">
-        <label for="">Service</label>
-        <input type="text" name="service" value="<%= foundService.service %>">
-        <label for="">Price</label>
-        <input type="text" name="price" value="<%= foundService.price%>">
-        <label for="">Details</label>
-        <input type="text" name="details" value="<%= foundService.details %>">
-        <% providers.forEach((provider)=> { %>
-        <select name="provider" id="">
-            <option value="<%=provider._id %>">
-                <%=provider.name %>
-            </option>
-        </select>
+    <%- include('../navbar') %>
 
-        <% })%>
-        <button>Edit Serveice</button>
+    <div class="container auth-container">
+        <h1>Edit Service</h1>
 
+        <!-- Edit Form -->
+        <form action="/service/<%=foundService._id %>/edit" method="post" class="auth-form">
+            
+            <div class="input-group">
+                <label class="label" for="service">Service</label>
+                <input type="text" name="service" id="service" class="input" value="<%= foundService.service %>" required>
+            </div>
 
-    </form>
-     
-    <form action="/service/<%= foundService._id%>/delete" method="post"> 
-        <button>Delete</button>
-    </form>
-    
+            <div class="input-group">
+                <label class="label" for="price">Price</label>
+                <input type="text" name="price" id="price" class="input" value="<%= foundService.price %>" required>
+            </div>
+
+            <div class="input-group">
+                <label class="label" for="details">Details</label>
+                <input type="text" name="details" id="details" class="input" value="<%= foundService.details %>" required>
+            </div>
+
+            <div class="input-group">
+                <label class="label" for="provider">Select Provider</label>
+                <select name="provider" id="provider" class="select" required>
+                    <% providers.forEach((provider) => { %>
+                        <option value="<%= provider._id %>" <%= provider._id.toString() === foundService.provider.toString() ? 'selected' : '' %> >
+                            <%= provider.name %>
+                        </option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <button type="submit" class="sign-inBtn">
+                <span class="label">Update Service</span>
+                <span class="gradient"></span>
+                <span class="transition"></span>
+            </button>
+        </form>
+
+        <!-- Delete Form -->
+        <form action="/service/<%= foundService._id %>/delete" method="post" style="text-align:center; margin-top: 1rem;">
+            <button type="submit" class="btn btn-secondary">Delete Service</button>
+        </form>
+
+        <div style="text-align:center; margin-top: 1.5rem;">
+            <a href="/service" class="btn btn-secondary">Back to Services</a>
+        </div>
+    </div>
+
 </body>
 </html>

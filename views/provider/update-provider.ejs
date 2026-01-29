@@ -3,23 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Update Provider</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    <h1>Update Provider Page</h1>
 
-    <form action="/provider/update/<%= foundProvider._id %>" method="post">
-        <label for="">Name:</label>
-        <input type="text" name="name" value="<%= foundProvider.name %>">
-        <label for="">Email:</label>
-        <input type="text" name="email" value="<%= foundProvider.email %>">
-        <label for="">Photo:</label>
-        <input type="text" name="image" value="<%= foundProvider.image %>">
-        <label for="">Qualification:</label>
-        <input type="text" name="qualification" value="<%= foundProvider.qualification %>">
+    <%- include('../navbar') %>
 
-        <button>Update Provider</button>
-    </form>
+    <div class="auth-container">
+        <h1>Update Provider</h1>
+
+        <form action="/provider/update/<%= foundProvider._id %>" method="post" class="auth-form">
+
+            <label>Name:</label>
+            <input type="text" name="name" class="input" value="<%= foundProvider.name %>">
+
+            <label>Email:</label>
+            <input type="text" name="email" class="input" value="<%= foundProvider.email %>">
+
+            <label>Photo URL:</label>
+            <input type="text" name="image" class="input" value="<%= foundProvider.image %>">
+
+            <label>Qualification:</label>
+            <input type="text" name="qualification" class="input" value="<%= foundProvider.qualification %>">
+
+            <button class="sign-inBtn" type="submit">
+                <span class="transition"></span>
+                <span class="gradient"></span>
+                <span class="label">Update Provider</span>
+            </button>
+
+        </form>
+    </div>
+
 </body>
 </html>

@@ -3,53 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Create Appointment</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Welcome to Create Appointment Page</h1>
 
-    <form action="/appointment/new" method="post">
+    <%- include('../navbar') %>
 
-        <label for="">Date:</label>
-        <input type="date" name="date">
-        <label for="">Time:</label>
-        <input type="time" name="time"> 
-        <label for="">Servies</label>
-        <%service.forEach((oneService)=>{ %>
-        <select name="service" id="">
-            <option value="<%=oneService._id %>">
-                <%=oneService.service %>
-            </option>
+    <div class="container auth-container">
+        <h1>Create Appointment</h1>
 
+        <form action="/appointment/new" method="post" class="auth-form">
 
-        </select>
-        <% })%>
-        <label for="">Price:</label>
-        <%service.forEach((oneService)=>{ %>
-        <select name="price" id="">
-            <option value="<%=oneService._id %>">
-                <%= oneService.price %>
-            </option>
+            <div class="input-group">
+                <label class="label" for="date">Date</label>
+                <input type="date" name="date" id="date" class="input" required>
+            </div>
 
+            <div class="input-group">
+                <label class="label" for="time">Time</label>
+                <input type="time" name="time" id="time" class="input" required>
+            </div>
 
-        </select>
-        <% })%>
-        <label for=""> Provider</label>
-        <%service.forEach((oneService)=>{ %>
-        <select name="provider" id="">
-            <option value="<%=oneService._id %>">
-                <%=oneService.provider.name %>
-            </option>
+            <div class="input-group">
+                <label class="label" for="service">Service</label>
+                <select name="service" id="service" class="select" required>
+                    <% service.forEach((oneService) => { %>
+                        <option value="<%= oneService._id %>"><%= oneService.service %></option>
+                    <% }) %>
+                </select>
+            </div>
 
+            <div class="input-group">
+                <label class="label" for="price">Price</label>
+                <select name="price" id="price" class="select" required>
+                    <% service.forEach((oneService) => { %>
+                        <option value="<%= oneService._id %>"><%= oneService.price %></option>
+                    <% }) %>
+                </select>
+            </div>
 
-        </select>
-        <% })%>
+            <div class="input-group">
+                <label class="label" for="provider">Provider</label>
+                <select name="provider" id="provider" class="select" required>
+                    <% service.forEach((oneService) => { %>
+                        <option value="<%= oneService._id %>"><%= oneService.provider.name %></option>
+                    <% }) %>
+                </select>
+            </div>
 
+            <button type="submit" class="sign-inBtn">
+                <span class="label">Create Appointment</span>
+                <span class="gradient"></span>
+                <span class="transition"></span>
+            </button>
 
+        </form>
 
-        <button>Create</button>
-        
-    </form>
+        <div style="text-align:center; margin-top:1.5rem;">
+            <a href="/appointment" class="btn btn-secondary">Back to Appointments</a>
+        </div>
+    </div>
+
 </body>
 </html>

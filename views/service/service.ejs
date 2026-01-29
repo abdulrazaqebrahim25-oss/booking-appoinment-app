@@ -3,30 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Page</title>
-    
+    <title>Services</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Welcome to Service Page</h1>
 
-    <nav> 
-        <% if (user && user.role === 'Admin') { %>
-            <a href="/service/new">Add New Service</a>
-        <% } %>
-        <a href="/">Back to Home Page</a>
-    </nav>
+    <%- include('../navbar') %>
 
-    <% services.forEach((oneService) => { %>
-        <p>Service: <%= oneService.service %></p>
-        <p>Price: <%= oneService.price %></p>
-        <p>Details: <%= oneService.details %></p>
-        <p>Provider: <%= oneService.provider.name %></p>
+    <div class="container">
+        <h1>Services</h1>
 
-        <% if (user && user.role === 'Admin') { %>
-            <a href="/service/<%= oneService._id %>">Edit Service</a>
-           
-        <% } %>
-        <hr>
-    <% }) %>
+        <div class="provider-actions">
+            <% if (user && user.role === 'Admin') { %>
+                <a href="/service/new" class="btn btn-primary">Add New Service</a>
+            <% } %>
+            <a href="/" class="btn btn-secondary">Back Home</a>
+        </div>
+
+        <div class="provider-grid">
+            <% services.forEach((oneService) => { %>
+                <div class="provider-card">
+
+                    <div class="provider-details">
+                        <p class="label">Service</p>
+                        <p class="value"><%= oneService.service %></p>
+
+                        <p class="label">Price</p>
+                        <p class="value"><%= oneService.price %></p>
+
+                        <p class="label">Details</p>
+                        <p class="value"><%= oneService.details %></p>
+
+                        <p class="label">Provider</p>
+                        <p class="value"><%= oneService.provider.name %></p>
+                    </div>
+
+                    <% if (user && user.role === 'Admin') { %>
+                        <div class="provider-buttons">
+                            <a href="/service/<%= oneService._id %>" class="btn btn-secondary">Edit</a>
+                        </div>
+                    <% } %>
+
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
 </body>
 </html>
